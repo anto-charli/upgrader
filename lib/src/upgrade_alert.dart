@@ -145,6 +145,13 @@ class _UpgradeBase extends StatefulWidget {
 
 class _UpgradeBaseState extends State<_UpgradeBase> {
   bool rebuildNeeded = false;
+  Future<bool> upgrader;
+
+  @override
+  void initState() {
+    super.initState();
+    upgrader = Upgrader().initialize();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -213,7 +220,7 @@ class UpgradeCard extends _UpgradeBase {
     }
 
     return FutureBuilder(
-        future: Upgrader().initialize(),
+        future: state.upgrader,
         builder: (BuildContext context, AsyncSnapshot<bool> processed) {
           if (processed.connectionState == ConnectionState.done) {
             if (Upgrader().shouldDisplayUpgrade()) {
@@ -320,7 +327,7 @@ class UpgradeAlert extends _UpgradeBase {
   @override
   Widget build(BuildContext context, _UpgradeBaseState state) {
     if (Upgrader().debugLogging) {
-      print('upgrader: build UpgradeAlert!');
+      print('upgrader: build UpgradeAlert!!');
     }
 
     return FutureBuilder(
