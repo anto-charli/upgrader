@@ -320,7 +320,7 @@ class UpgradeAlert extends _UpgradeBase {
   @override
   Widget build(BuildContext context, _UpgradeBaseState state) {
     if (Upgrader().debugLogging) {
-      print('upgrader: build UpgradeAlert');
+      print('upgrader: build UpgradeAlert!');
     }
 
     return FutureBuilder(
