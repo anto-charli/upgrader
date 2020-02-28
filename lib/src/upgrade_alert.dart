@@ -221,6 +221,7 @@ class UpgradeCard extends _UpgradeBase {
 
     return FutureBuilder(
         future: state.upgrader,
+        // future: Upgrader().initialize(),
         builder: (BuildContext context, AsyncSnapshot<bool> processed) {
           if (processed.connectionState == ConnectionState.done) {
             if (Upgrader().shouldDisplayUpgrade()) {
@@ -327,11 +328,12 @@ class UpgradeAlert extends _UpgradeBase {
   @override
   Widget build(BuildContext context, _UpgradeBaseState state) {
     if (Upgrader().debugLogging) {
-      print('upgrader: build UpgradeAlert!!');
+      print('upgrader: build UpgradeAlert !!!');
     }
 
     return FutureBuilder(
-        future: Upgrader().initialize(),
+        // future: Upgrader().initialize(),
+        future: state.upgrader,
         builder: (BuildContext context, AsyncSnapshot<bool> processed) {
           if (processed.connectionState == ConnectionState.done) {
             Upgrader().checkVersion(context: context);

@@ -230,7 +230,7 @@ class Upgrader {
 
   String appName() {
     _verifyInit();
-    return _packageInfo.appName;
+    return _packageInfo.appName??'Swell';
   }
 
   String currentAppStoreListingURL() {
